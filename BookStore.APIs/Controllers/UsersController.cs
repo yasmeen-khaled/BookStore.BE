@@ -53,7 +53,7 @@ namespace BookStore.APIs.Controllers
         }
         [HttpPost]
         [Route("Register/user")]
-        [Authorize(Policy = "allowAdmins")]
+        //[Authorize(Policy = "allowAdmins")]
         public ActionResult<TokenDto> RegisterUser(RegisterDTo registerDTO)
         {
             var employeeToAdd = new IdentityUser

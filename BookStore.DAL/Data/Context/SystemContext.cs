@@ -23,44 +23,7 @@ namespace BookStore.DAL
         {
             base.OnModelCreating(modelBuilder);
 
-            var passwordHasher = new PasswordHasher<IdentityUser>();
-            modelBuilder.Entity<IdentityUser>().HasData(
-                new IdentityUser
-                {
-                    Id = "1",
-                    UserName = "Admin",
-                    PasswordHash = passwordHasher.HashPassword(null,"AdminPassword123")
-                },
-                new IdentityUser
-                {
-                    Id = "2",
-                    UserName = "Yasmeen",
-                    PasswordHash = passwordHasher.HashPassword(null, "AdminPassword123")
-                },
-                new IdentityUser
-                {
-                    Id = "3",
-                    UserName = "Khaled",
-                    PasswordHash = passwordHasher.HashPassword(null, "AdminPassword123")
-                }
-            );
-
-
-            var adminClaims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, "1"),
-                new Claim(ClaimTypes.Role, "admin")
-            };
-
-            modelBuilder.Entity<IdentityUserClaim<string>>().HasData(
-                adminClaims.Select((claim, index) => new IdentityUserClaim<string>
-                {
-                    Id = index + 1,
-                    UserId = "1",
-                    ClaimType = claim.Type,
-                    ClaimValue = claim.Value
-                }).ToArray()
-            );
+            
         }
     }
 }
